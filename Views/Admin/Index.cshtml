@@ -1,0 +1,50 @@
+﻿@model List<eadp1.Models.Product>
+@{
+    Layout="/Views/Shared/_Layout2.cshtml";
+    }
+<script type="text/javascript" src="/Scripts/search.js">
+    
+</script>
+
+
+<div id="body">
+    <div id="contents">
+        <h1>Products</h1>
+        <div  id="sidebar"  " class="well-sidebar-nav-fixed">
+            <!-- Search -->
+            <div class="box search">
+               
+                
+            </div>
+      <!-- End Search -->
+      <!-- Categories -->
+            <div class="box categories">
+     
+               
+
+           </div>
+      <!-- End Categories -->
+        </div>
+	    <div id="main">
+            <button style="background-size:auto">@Html.ActionLink("Add New Product", "addProduct")</button>
+			<div id="contents1">
+                @foreach (var product in Model)
+                {   
+                    <ul id="shirts" class ="preloader">
+				        <li><a href="#header"><img src= '@product.imgLink' alt="Img" style="width:500px; height:280px"></a>
+                            <a href="~/Admin/delete/@product.Id" class="button">delete</a>
+                            <a href="/Admin/edit/@product.Id" class="button" >Edit</a>
+					        <p>
+						        @product.brandName <br> <span>Rs. @product.price</span>
+					        </p>
+                        </li>
+                    </ul>
+	
+                }
+
+		    </div>	
+		</div>
+	</div>
+</div>
+
+   

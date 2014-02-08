@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+@model List<eadp1.Models.Product>
+@{
+        Layout="~/Views/Shared/_Layout.cshtml";	
+        }
+<div id="body">
+	<div id="contents">
+		<h1>Women</h1>
+        @foreach (var product in Model)
+        {   
+            <ul id="shirts" class ="preloader">
+			<li>
+                <a href="/Product/showDetail/@product.Id"><img src= '@product.imgLink' alt="Img" style="width:500px; height:280px"></a> <a href="/Product/showCart" class="button">Add to cart</a>
+				<p>
+					@product.brandName <br> <span>Rs. @product.price</span>
+				</p>
+            </li>
+            </ul>
+	
+        }
+    </div>
+</div>

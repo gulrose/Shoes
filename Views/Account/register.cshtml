@@ -1,0 +1,64 @@
+﻿@model eadp1.Models.User
+
+@{
+    Layout="~/Views/Shared/_Layout.cshtml";	
+}
+
+<script>
+    $(document).ready(function ()
+    {
+        $('#check').click(function ()
+        {
+            var name = $('#name').val();
+            $('#status').text('Checking');
+            $.getJSON("/Account/checkName?name=" + name, function (data)
+            {
+                if (data)                {
+                    $('#status').text("UserName is not Available to use");
+                }                else                {
+                    $('#status').text("UserName is Available to use");
+                }
+            });
+        });
+    });
+</script>
+  
+
+<div id="body">
+    <div id="contents">
+        <div class="login">
+        <h3>Sign In to Shop , Track and Manage your Order  </h3>
+        <form action="/Account/register" id="register" method="post">
+        <table border="0">
+        <tbody>
+            <tr>
+                <td  style="color:yellow"><label for="name">Your Name*: </label> </td>
+                <td><input id="name" maxlength="45" name="name" type="text" /> </td>
+                <td ><input id="check" name="check" type="button" value="check" /></td>
+                <td  style="color:yellow"><p id="status"></p><td>
+            </tr>
+            
+            <tr>
+                <td style="color:yellow"><label for="email">Email Address*:</label> </td>
+                 <td>@Html.TextBoxFor(model => model.email)</td>
+                 <td style="color:yellow">@Html.ValidationMessageFor(model => model.email)</td>
+            </tr>
+
+            
+            <tr>
+               
+                <td style="color:yellow"><label for="password">Password*:</label></td>
+                <td><input id="password" maxlength="45" name="password" type="password" /></td>
+                <td style="color:yellow"><input name="Submit" type="submit" value="Submit" style="padding-left:10px"/></td>     
+            </tr>
+            
+            <tr>
+                <td style="color:yellow">Already have an Acount <a href="~/Account/login"> login </a></td>
+               
+            </tr>
+        </tbody>
+        </table>
+        </form>
+        </div>
+    </div>
+</div>

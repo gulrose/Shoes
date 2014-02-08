@@ -1,0 +1,50 @@
+﻿@model List<eadp1.Models.Product>
+@{
+        Layout="~/Views/Shared/_Layout.cshtml";	
+        }
+
+<div id="adbox">
+    <h1>Hot Sale Shoes</h1>
+    @foreach (var product in Model)
+    {
+        <ul id="shirts" class ="preloader">
+            <li>
+                <a href="#header"><img src= '@product.imgLink' alt="Img" style="width:500px; height:280px"></a> <a href="#header" class="button">Add to cart</a>
+				<p>
+                    @product.brandName <br> <span>Rs. @product.price</span>
+				</p>
+			</li>
+           </ul>
+    }
+
+</div>
+
+<div id="body">
+    <div id="contents">
+		<ul id="articles">
+			<li>
+				<h1>Why Us?</h1>
+				<p>
+                    In our store you would see latest varieties of every popular brands of footware in Pakistan. Fancy Shoes try to focus every need of customer.				
+
+				</p>
+				
+                <a href="~/Home/about" class="more">Read More</a>
+			</li>
+		    <li>
+                <h1>On Sale</h1>
+				<p>Get yourself great pair of shoes in very suitable price and quality. Take full advantage of our latest cheap prices and latest offers.</p>
+					<a href="~/Home/products" class="more">View All</a>
+				</li>
+				<li>
+					<h1>Get a Quote</h1>
+					<p>
+						If you'r having any type of problems regarding to our product. you can contact us and tell us about it.<br><br>
+					</p>
+					<a href="~/Home/contact" class="more">Request</a>
+				</li>
+			</ul>
+
+    </div>	
+
+</div>

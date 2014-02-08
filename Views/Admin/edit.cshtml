@@ -1,0 +1,66 @@
+﻿@model eadp1.Models.Product
+@{
+    Layout="~/Views/Shared/_Layout2.cshtml";	
+}
+	
+<div id="body">
+    <div id="contents">
+        <h1>Edit Product </h1>
+        @using (@Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <fieldset>
+                <legend style="color:yellow">Product</legend>
+                <div>
+                    
+                    
+                    <img src=@Model.imgLink style="height:250px; width:250px">
+                 </div>
+                <div class="editor-label" style="color:yellow">
+                    @Html.LabelFor(model => model.brandName)
+                </div>
+                
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.brandName)
+                    @Html.ValidationMessageFor(model => model.brandName)
+
+                </div>
+                
+                <div class="editor-label" style="color:yellow">
+                    @Html.LabelFor(model => model.price)
+                </div>
+                
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.price)
+                    @Html.ValidationMessageFor(model => model.price)
+           
+                </div>
+
+                  <div class="editor-label" style="color:yellow">
+                    @Html.LabelFor(model => model.type)
+                </div>
+                   <div class="editor-field" style="color:yellow">
+                    @Html.EditorFor(model => model.type)
+                    @Html.ValidationMessageFor(model => model.type)
+                        <p style="color:gold">Enter 1 for Men , 2 For Women And 3 for Sale Shoes</p>
+                </div>
+                
+                <div class="editor-label" style="color:yellow">
+                    @Html.LabelFor(model => model.imgLink)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.imgLink)
+                    @Html.ValidationMessageFor(model => model.imgLink)
+                </div>
+
+                <p>
+                    <input type="submit" value="Edit"  />
+                </p>
+        </fieldset>
+    }
+
+    <div>
+        @Html.ActionLink("Back to Home", "Index")
+    </div>
+    </div>
+</div>	

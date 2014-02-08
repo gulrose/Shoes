@@ -1,0 +1,19 @@
+﻿@model eadp1.Models.Product
+@{
+        Layout="~/Views/Shared/_Layout.cshtml";	
+        }
+
+<div id="body">
+    <div id="contents">
+		<h1>Detail</h1>
+        <a><img src= @Model.imgLink alt="Img" style="width:500px; height:500px"></a> <a href="/Product/showCart" class="button">Add to cart</a>
+                 
+    </div>
+    <div>
+         <p style="font-size:x-large ; color:yellow">Type        : @Model.type</p> 
+        <p style="font-size:smaller ; color:gold">(1 Represent Men , 2 Represent Women, 3 For Sale Shoes)  </p>
+        <p style="font-size:x-large ; color:yellow">BrandName    : @Model.brandName </p>
+        <p style="font-size:x-large ; color:yellow">Price        : Rs. @Model.price</p>   
+    </div>
+
+</div>

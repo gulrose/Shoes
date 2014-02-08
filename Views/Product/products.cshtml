@@ -1,0 +1,91 @@
+﻿@model List<eadp1.Models.Product>
+@{
+    Layout="~/Views/Shared/_Layout.cshtml";	
+    }
+
+<script type="text/javascript" src="~/scripts/search.js">
+    
+</script>
+ 
+<script>
+    $(document).ready(function ()
+    {
+        $("#b2").click(function ()
+        {
+            
+            var p1 = $("#f1").val();
+            var p2 = $("#f2").val();
+            $("#contents1").empty();
+            $.getJSON("/Product/searchedItems1?a=" + p1 + "&b=" + p2, function (data)
+            {
+                if (data) {
+                    $.each(data, function (i, item) {
+                        $('#main1').append('<tr><td><a href="/Product/showDetail/" ><img  src=' + item.imgLink + ' alt="Img" style="width:250px; height:250px "></img></a><td>');
+                        $('#main1').append(' <a href = "#header"  class="button">Add to cart</a></td></tr>');
+                        $('#main1').append('<tr><td style="color:Yellow " > ' + item.brandName + ' <br> <span>Rs. ' + item.price + ' </span></td></tr>');
+                    });
+                }
+                if(data == null) {
+                    $('#main1').append('<tr><td><h1 style="color:Yellow"> There is no Shoe EXISTS of Such Price Range</h1></td></tr');
+                    $('#main1').append('<h1 style="color:Yellow"> You have to Enter Price Range Again</h1>');
+                }
+            });
+        });
+    });
+</script>
+
+<div id="body">
+	<div id="contents">
+		<h1>Products</h1>
+		<div  id="sidebar"  " class="well-sidebar-nav-fixed">
+            <!-- Search -->
+            <div class="box search">
+                <h2 style="color:yellow">Search by <span></span></h2>
+                <div class="box-content">
+                   
+                        <p style="text-align:center ; color:gold "> Price</p>
+                        <div class="inline-field">
+                            <input  type="text" id="f1"/>
+                            <p style="text-align:center ; color:gold "> To</p>
+                            <input type ="text" id="f2">
+                        </div>
+                        <input type="button"  value="Search" id="b2"/>
+                    
+                </div>
+            </div>
+      <!-- End Search -->
+      <!-- Categories -->
+            <div class="box categories">
+                
+                <h2 style="color:yellow ">Brands <span></span></h2>
+                <div class="box-content">
+                    <input type="button" value="Bata" id="bata"/>
+                    <input type="button" value="Don Carlos" id="doncarlos"/>
+                    <input type="button" value="Service" id="service"/>
+                    <input type="button" value="Calza" id="calza"/>
+                    <input type="button" value="Cheetah" id="cheetah"/>
+                </div>
+
+            </div>
+      <!-- End Categories -->
+
+		</div>
+        <div id="main1">
+            <div id="contents1">
+                @foreach (var product in Model)
+                {   
+                    <ul id="shirts" class ="preloader">
+				        <li>
+					        <a href="/Product/showDetail/@product.Id"><img src= '@product.imgLink' alt="Img" style="width:300px; height:300px"></a> <a href="/Product/showCart" class="button">Add to cart</a>
+					        <p>
+						        @product.brandName <br> <span>Rs. @product.price</span>
+					        </p>
+                        
+				        </li>
+                    </ul>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
